@@ -4,12 +4,15 @@ import { expect } from "@playwright/test";
 test.describe("imdb UI steps", () => {
     test("Search and Validate the movie",
         async ({homePage, searchPage}) => {
-            await homePage.searchField.fill("inception")
+            const testCase = "bingo"
+            await homePage.searchField.fill(testCase)
             await homePage.searchField.press("Enter")
-            expect(await (await searchPage.searchKeyword("inception")).textContent()).toBe(`Search \"inception\"`)
+            expect(await (await searchPage.searchKeyword(testCase)).textContent()).toBe(`Search \"${testCase}\"`)
 
             const result = await searchPage.getResult()
-            const invalidTitles = result.filter(title => !title.includes("Inception"))
+            const invalidTitles = result.filter(
+                title => !title.toLowerCase().includes(testCase.toLowerCase())
+            )
 
             expect(
                 invalidTitles,
