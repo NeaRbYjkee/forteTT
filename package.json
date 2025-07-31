@@ -1,0 +1,21 @@
+{
+  "name": "fortett",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "tests": "npx playwright test",
+    "testGUI": "npx playwright test --ui",
+    "testDEBUG": "npx playwright test --debug",
+    "report": "allure generate tests/test-results/allure-results --clean -o tests/test-results/allure-report && allure open tests/test-results/allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.1.0",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.3.2"
+  }
+}
